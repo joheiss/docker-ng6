@@ -1,0 +1,15 @@
+version: '3'
+services:
+  ng6-app:
+    build:
+      context: .
+      dockerfile: Dockerfile.dev
+    ports:
+      - "4200:4200"
+      - "49153:49153"
+    expose:
+      - "4200"
+      - "49153"
+    volumes:
+      - /usr/app/node_modules
+      - .:/usr/app
