@@ -15,5 +15,5 @@ EXPOSE 80
 
 WORKDIR /usr/share/nginx/html
 
-COPY --from=builder /usr/app/dist/ng6-app/ .
+COPY --from=builder /usr/app/dist/ng6-app .
 
