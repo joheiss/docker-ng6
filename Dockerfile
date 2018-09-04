@@ -11,6 +11,8 @@ CMD ["npm", "run", "build:prod"]
 # Run phase
 FROM nginx:alpine
 
+EXPOSE 80
+
 WORKDIR /usr/share/nginx/html
 
 COPY --from=builder /usr/app/dist/ng6-app/ .
