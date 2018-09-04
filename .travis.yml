@@ -7,3 +7,18 @@ before_install:
 
 script:
   - docker run joheiss/docker-ng6 npm run test
+
+deploy:
+  provider: elasticbeanstalk
+  region: "eu-central-1"
+  app: "docker-ng6"
+  env: "DockerNg6-env"
+  bucket_name: "elasticbeanstalk-eu-central-1-577161315079"
+  bucket_path: "docker-ng6"
+  on:
+    branch: master
+  access_key_id: "$AWS_ACCESS_KEY"
+  secret_access_key: "$AWS_SECRET_KEY"
+
+
+DockerNg6-env.fnygmd4wnx.eu-central-1.elasticbeanstalk.com
