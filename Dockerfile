@@ -2,18 +2,19 @@
 FROM node:alpine AS builder
 
 WORKDIR '/usr/app'
-COPY package*.json ./
+COPY package*.json /usr/app/
 RUN npm install
-COPY . .
+COPY ./ /usr/app/
 
-CMD ["npm", "run", "build:prod"]
+ARG configuration=production
+
+RUN npm run build -- --output-path=./dist/out --configuration $configuration
 
 # Run phase
 FROM nginx:alpine
 
 EXPOSE 80
 
-WORKDIR /usr/share/nginx/html
+COPY --from=builder /usr/app/dist/out/ /usr/share/nginx/html
 
-COPY --from=builder /usr/app/dist/ng6-app/ .
 
