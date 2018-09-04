@@ -8,7 +8,7 @@ COPY ./ /usr/app/
 
 ARG configuration=production
 
-RUN npm run build -- --output-path=./dist/out --configuration $configuration
+RUN npm run build -- --output-path=/usr/app/dist/out --configuration $configuration
 
 # Run phase
 FROM nginx:alpine
